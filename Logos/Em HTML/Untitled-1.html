@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Logo Academia Wired with CANVAS</title>
+
+<script>
+
+	var image3 = new Image();
+	var ctx;
+	ctx = document.getElementById("canvas").getContext("2d");
+	image3.src = "http://3.bp.blogspot.com/-KTtHBPC_Jn8/VKHb66641JI/AAAAAAAAs-Q/1Zic-SCgejg/s0/Fundo%2Bdo%2BBlog.png";
+	image3.onload = function(){
+	    ctx.font="bold 100px AR DESTINE";
+	    var x = 0;
+	    var y = 0;
+	    var velX = 1;
+	    var velY = 1;
+	    function animate(){
+		    x+=velX;
+		    y+=velY;
+		    ctx.globalCompositeOperation = 'source-over';
+		    if (x <= 0) { velX *= -1; x=0; };
+		    if (x >= canvas.width){ velX *= -1; x = canvas.width; };
+		    if (y <= 0){ velY *= -1; y = 0; };
+		    if (y >= canvas.height){ velY *= -1; y = canvas.height; };
+	        ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.textBaseline="middle"; 
+            ctx.textAlign="center";
+	        ctx.fillText("Academia",x,y);
+    	    ctx.globalCompositeOperation = 'source-atop';
+	        ctx.drawImage(image3, 0, 0);
+    	}
+		timer = setInterval(animate, 2)
+	}
+
+    
+	var ctx2;
+	ctx2 = document.getElementById("canvas2").getContext("2d");
+        
+	    ctx2.font="bold 100px AR DESTINE";
+	    var x = 0;
+	    var y = 0;
+	    var velX = 1;
+	    var velY = 1;
+	    function animate(){
+		    x+=velX;
+		    y+=velY;
+		    ctx2.globalCompositeOperation = 'source-over';
+		    if (x <= 0) { velX *= -1; x=0; };
+		    if (x >= canvas.width){ velX *= -1; x = canvas.width; };
+		    if (y <= 0){ velY *= -1; y = 0; };
+		    if (y >= canvas.height){ velY *= -1; y = canvas.height; };
+	        ctx2.clearRect(0, 0, canvas.width, canvas.height);
+            
+			ctx2.shadowBlur = 20;
+			ctx2.shadowOffsetY = 1;
+			ctx2.shadowOffsetX = 1;
+			ctx2.shadowColor = "black";
+			ctx2.fillStyle = "black";
+			ctx2.globalCompositeOperation = 'source-out';
+            ctx2.textAlign="center";
+            ctx2.textBaseline="middle";
+	        ctx2.fillText("Academia",x,y);
+			ctx2.shadowBlur = 0;
+			ctx2.shadowOffsetY = 0;
+			ctx2.shadowOffsetX = 0;
+			ctx2.fillStyle = "blue";
+    	}
+		timer = setInterval(animate, 2)
+
+</script>
+
+<style>
+body {
+    background: black;
+}
+canvas {
+    display: block;
+    top: 0;
+    left: 0;
+    border: solid 1px black;
+    position: absolute;
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<canvas id="canvas" width="500" height="400" style="background: #FFF;"></canvas>	
+	<canvas id="canvas2" width="500" height="400"></canvas>
+
+</body>
+</html>
